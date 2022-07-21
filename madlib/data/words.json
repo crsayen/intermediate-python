@@ -1,0 +1,7 @@
+{
+  "noun": ["mouse", "toilet", "shelf", "tree", "vase", "book"],
+  "plural": ["cats", "microphones", "cars", "pillows"],
+  "adjective": ["colorful", "smelly", "fuzzy", "enormous", "tiny"],
+  "place": ["Detroit", "the Shire", "Whoville", "space"],
+  "person": ["anonymous"]
+}

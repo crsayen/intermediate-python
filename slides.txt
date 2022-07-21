@@ -1,0 +1,138 @@
+Classes and Objects
+
+Almost everything in Python is an Object.
+Objects are like packages of data and functionality.
+Classes are like Object recipes
+Every Object is an _instance_ of a Class -- The same way a meal is an instance of a recipe
+
+A simple Class
+
+class Message:
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+
+myMessage = Message("Chris", "myMessage is an instance of the Message class")
+print(myMessage.author) # Chris
+print(myMessage.content) # myMessage is an instance of the Message class
+
+*************************************************************************************
+
+Methods
+
+Methods are (usually) functions that belong to a class instance.
+Python passes the instance itself as the first parameter to a Method.
+It's convention to call that parameter 'self'
+
+class Message:
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+
+    def toString(self):
+        return f"{self.author} says {self.content}"
+
+myMessage = Message("Chris", "Python will pass 'self' automatically")
+print(myMessage.toString())
+
+*************************************************************************************
+
+Fun Tangent: Magic Methods
+
+Python has special methods usually called 'Magic Methods' or 'Dunder methods'
+Magic Methods start and end with double underscores (hence 'dunder').
+Magic Methods are not meant to be called by the author. Python uses them internally.
+
+class Message:
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+
+    def __str__(self):
+        return f"{self.author} says {self.content}"
+
+myMessage = Message("Chris", "Python will pass 'self' automatically")
+print(myMessage)
+
+*************************************************************************************
+
+Class Variables
+
+The variables 'self.author' and 'self.content' are instance variables.
+Each Object of the Message class has their own copy of those variables.
+Classes themselves can have variables too. Class variables are shared by all instances of the class.
+
+class Message:
+    verb = "says"
+
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+
+    def __str__(self):
+        return f"{self.author} {self.__class__.verb} {self.content}"
+
+*************************************************************************************
+
+Inheritance
+
+Classes can be extended via inheritance.
+When a class inherits from another class it gets all of the inherited class's methods for free.
+
+class WhisperedMessage(Message):
+    verb = "whispers"
+
+class ScreamedMessage(Message):
+    verb = "screams"
+
+myMessage = Message("Chris", "I've got a message")
+myWhisperedMessage = WhisperedMessage("Chris", "I've got a secret")
+myScreamedMessage = ScreamedMessage("Chris", "I've got the power!")
+
+print(myMessage)           # Chris says I've got a message
+print(myWhisperedMessage)  # Chris whispers I've got a secret
+print(myScreamedMessage)   # Chris screams I've got the power!
+
+*************************************************************************************
+
+Inheritance Continued
+
+Classes can extend the inherited class by adding methods.
+
+class ScreamedMessage(Message):
+    verb = "screams"
+
+    def scream_it(self):
+        print(self.content.upper())
+
+myScreamedMessage = ScreamedMessage("Chris", "I've got the power!")
+myScreamedMessage.scream_it() # I'VE GOT THE POWER!
+
+*************************************************************************************
+
+Testing
+
+Testing is a critical part of software development.
+Tests are proof that our software does what it's supposed to.
+Tests can guide the design of your software.
+
+*************************************************************************************
+
+Pytest
+
+import unittest
+
+class TestMessageClass(unittest.TestCase):
+    def test_message_constructor():
+        expectedAuthor = "author"
+        expectedContent = "content"
+        message = Message(expectedAuthor, expectedContent)
+        self.assertEqual(message.author, expectedAuthor)
+        self.assertEqual(message.content, expectedContent)
+
+    def test_message_str():
+        expectedAuthor = "author"
+        expectedContent = "content"
+        message = Message(expectedAuthor, expectedContent)
+        message_string = f"{message}"
+        self.assertEqual(message_string, f"{expectedAuthor} says {expectedContent}")
