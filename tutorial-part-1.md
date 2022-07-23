@@ -138,3 +138,7 @@ class Message:
 myMessage = Message("Chris", "hello!")
 myMessage.print_greeting() # Chris says hello!
 ```
+
+#### Inheritance - coming soon
+
+#### Testing - coming soon

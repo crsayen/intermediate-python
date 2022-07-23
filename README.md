@@ -1,6 +1,6 @@
 # Intermediate Python
 
-## Integrate Detroit
+## read the [walkthrough](tutorial-part-1.md)
 
 This is the content repository for the Intermediate Python course offered by Integrate Detroit in July 2022.
 
