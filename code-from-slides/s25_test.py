@@ -1,5 +1,5 @@
 import unittest
-from s22 import Message
+from .s22 import Message
 
 expectedAuthor = "author"
 expectedContent = "content"
