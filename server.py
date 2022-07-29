@@ -8,6 +8,7 @@ from madlib.madlib import Madlib
 app = FastAPI()
 data = Data()
 sessions = {}
+# 3704c417-3103-48de-9d01-3db2742ff5fa
 
 
 @app.get("/new")
@@ -29,10 +30,9 @@ async def prompt(session: str, answer: Union[str, None] = None):
         raise HTTPException(status_code=404, detail="session not found")
 
     if answer is not None:
-        print(answer)
-        madlib.give_answer(answer)
+        madlib.give_next_answer(answer)
 
-    prompt = madlib.get_prompt()
+    prompt = madlib.get_next_prompt()
     if prompt is None:
         result = madlib.solve()
         del sessions[session]
