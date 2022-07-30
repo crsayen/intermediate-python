@@ -81,7 +81,7 @@ When running the code `myMessage = Message()`, Python calls `Message.__init__()`
 
 Calling `Message()` is sort of like calling `Message.__init__()`
 
-You may have noticed something's not right here. When we wrote `myMessage = Message()` we didn't pass any arguments, but `Message__init__` methos expects one argument, `self`. That's because Python automatically passes the _instance_ as the first argument to class methods. It's convention to name that argument "self" because _the argument is an instance of the class itself_
+You may have noticed something's not right here. When we wrote `myMessage = Message()` we didn't pass any arguments, but `Message__init__` method expects one argument, `self`. That's because Python automatically passes the _instance_ as the first argument to class methods. It's convention to name that argument "self" because _the argument is an instance of the class itself_
 
 #### Adding Data
 
