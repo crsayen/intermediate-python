@@ -10,8 +10,7 @@
 - [A Simple Class](#a-simple-class)
 - [Adding Data](#adding-data)
 - [Adding Functionality](#adding-functionality)
-- Inheritance - coming soon
-- Testing - coming soon
+- [Inheritance](#inheritance)
 
 Python is a [multi-paradigm](https://en.wikipedia.org/wiki/Programming_paradigm) programming language, but OOP is central to Python's design.
 
@@ -236,6 +235,8 @@ mySquare = Square(5)
 squareArea = mySquare.get_area()
 print(squareArea) # 25
 ```
+
+> read more about `super()` [here](https://www.geeksforgeeks.org/python-super/)
 
 Here's the full file with an added rectangle object:
 
