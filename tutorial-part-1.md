@@ -17,12 +17,12 @@ Python is a [multi-paradigm](https://en.wikipedia.org/wiki/Programming_paradigm)
 
 This document will guide you through the fundamentals of OOP in Python. This guide assumes you are familiar with basic Python syntax. If you would like to brush up, or if "Python syntax" is something you've never heard before, check out [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html). I'll also include links to various syntax in the [PythonCheatsheet](https://www.pythoncheatsheet.org) throughout this guide. If you see a word in blue that you don't understand, click it to get more information.
 
-### What is OOP?
+## What is OOP?
 
 From the [Wikipedia page on OOP](https://en.wikipedia.org/wiki/Object-oriented_programming):
 _Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data and code: data in the form of fields (often known as attributes or properties), and code, in the form of procedures (often known as methods)._
 
-### (Almost) Everything is an Object
+## (Almost) Everything is an Object
 
 In Python, almost everything is an Object. Here, we make a [list](https://www.pythoncheatsheet.org/cheatsheet/lists-and-tuples) containing [integers](https://www.pythoncheatsheet.org/cheatsheet/basics#data-types) `1`, `2`, and `3`. Then we append the integer `4` to the list:
 
@@ -39,7 +39,7 @@ We know the `myList` Object has **code** in it. We call a function `append` on `
 
 ## Where do Objects Come From?
 
-Every Object comes from a class. classes are Object blueprints. They describe what an Object is, and they're used to actually _create_ the Objects they describe. An Object is said to be an **instance** of the class it came from. An instance of the `List` class can also be called a **List object**.
+Every Object comes from a class. Classes are Object blueprints. Classes describe what an Object is, and classes are used to actually _create_ the Objects they describe. An Object is said to be an **instance** of the class it came from. An instance of the `List` class can also be called a **List object**.
 
 #### A Simple Class
 
@@ -54,7 +54,7 @@ class Message:
     pass
 ```
 
-Our `Message` class contains only the keyword `pass`. Pass tells Python to simply do _nothing_. We've described an object that doesn't contain any **data** or **code**
+The indented section is called the class _body_. Our `Message` class's body contains only the keyword `pass`. Pass tells Python to simply do _nothing_. We've described an object that doesn't contain any **data** or **code**
 
 But we can still create an instance of our `Message` class. We'll call our `Message` object "myMessage":
 
@@ -111,9 +111,9 @@ Now let's add an author:
 
 ```python
 class Message:
-    def __init__(self, content, author):
-        self.content = content
+    def __init__(self, author, content):
         self.author = author
+        self.content = content
 
 myMessage = Message("Chris", "myMessage is an instance of the Message class")
 print(myMessage.author)  # Chris
@@ -122,23 +122,141 @@ print(myMessage.content)  # myMessage is an instance of the Message class
 
 #### Adding Functionality
 
-We can add additional functionality to our `Message` class too. Class related functionality is contained as methods, just like the `__init__` method described earlier.
+We can add additional functionality to our `Message` class too. Class related functionality provided by methods, just like the `__init__` method described earlier.
 
 Let's add a method to `Message` that prints our message for us:
 
 ```python
 class Message:
-    def __init__(self, content, author):
-        self.content = content
+    def __init__(self, author, content):
         self.author = author
+        self.content = content
 
-    def print_message():
-        print(f"{self.author} says {self.conent}")
+    def print_message(self):
+        print(f"{self.author} says {self.content}")
 
 myMessage = Message("Chris", "hello!")
-myMessage.print_greeting() # Chris says hello!
+myMessage.print_message() # Chris says hello!
 ```
 
-#### Inheritance - coming soon
+## Inheritance
 
-#### Testing - coming soon
+One of the core concepts in OOP is [inheritance](https://www.w3schools.com/python/python_inheritance.asp). Inheritance enables you to create classes that are derived from other classes. The derived class is called a _child_ class, and the class it's derived from is called the _parent_ class. By default, a child class inherits all of the parent class's properties and methods.
+
+In the same file, let's create a `Whisper` class based on our `Message` class:
+
+```python
+class Whisper(Message):
+    pass
+```
+
+Since the `Whisper` class's body only contains the `pass` keyword, you might think `Whisper` can't do anything. However, because `Whisper` inherits from `Message`, it can do all the things the `Message` class can do:
+
+```python
+myWhisper = Whisper("Chris", "I've got a secret")
+myWhisper.print_message() # Chris says I've got a secret
+```
+
+#### Extending the `Message` class
+
+You can customize a child class by [overriding](https://www.geeksforgeeks.org/method-overriding-in-python/) its parent's methods:
+
+```python
+class Whisper(Message):
+    def print_message(self):
+        print(f"{self.author} whispers {self.content}")
+
+myWhisper = Whisper("Chris", "I've got a secret")
+myWhisper.print_message() # Chris whispers I've got a secret
+```
+
+Here is the whole file:
+
+```python
+class Message:
+    def __init__(self, author, content):
+        self.author = author
+        self.content = content
+
+    def print_message(self):
+        print(f"{self.author} says {self.content}")
+
+class Whisper(Message):
+    def print_message(self):
+        print(f"{self.author} whispers {self.content}")
+
+
+myMessage = Message("Chris", "hello!")
+myMessage.print_message() # Chris says hello!
+
+myWhisper = Whisper("Chris", "I've got a secret")
+myWhisper.print_message() # Chris whispers I've got a secret
+```
+
+#### Overriding the `__init__` method
+
+Say we have a `Rectangle` class:
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def get_area(self):
+        return self.width * self.height
+
+myRectangle = Rectangle(10, 5)
+rectangleArea = myRectangle.get_area()
+print(rectangleArea) # 50
+```
+
+And we want to inherit from `Rectangle` to create a `Square` class. Squares have the same width and height, so there's no reason to ask for both. We can derive a `Square` class with a constructor that takes just one parameter by overriding its `__init__` method.
+
+When we override `__init__` we need to call the parent's `__init__` method, passing `self` as well as `side_length` for both `height` and `width`:
+
+```python
+class Square(Rectangle):
+    def __init__(self, side_length):
+        Rectangle.__init__(self, side_length, side_length)
+
+mySquare = Square(5)
+squareArea = mySquare.get_area()
+print(squareArea) # 25
+```
+
+Python provides a shortcut, `super()` which doesn't need the `self` parameter:
+
+```python
+class Square(Rectangle):
+    def __init__(self, side_length):
+        super().__init__(side_length, side_length)
+
+mySquare = Square(5)
+squareArea = mySquare.get_area()
+print(squareArea) # 25
+```
+
+Here's the full file with an added rectangle object:
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def get_area(self):
+        return self.width * self.height
+
+class Square(Rectangle):
+    def __init__(self, side_length):
+        super().__init__(side_length, side_length)
+
+myRectangle = Rectangle(10, 5)
+rectangleArea = myRectangle.get_area()
+print(rectangleArea) # 50
+
+mySquare = Square(5)
+squareArea = mySquare.get_area()
+print(squareArea) # 25
+```
