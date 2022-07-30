@@ -81,11 +81,11 @@ When running the code `myMessage = Message()`, Python calls `Message.__init__()`
 
 Calling `Message()` is sort of like calling `Message.__init__()`
 
-You may have noticed something's not right here. When we wrote `myMessage = Message()` we didn't pass any arguments, but `Message__init__` method expects one argument, `self`. That's because Python automatically passes the _instance_ as the first argument to class methods. It's convention to name that argument "self" because _the argument is an instance of the class itself_
+You may have noticed something's not right here. When we wrote `myMessage = Message()` we didn't pass any arguments, but `Message__init__` method expects one argument, `self`. That's because Python automatically passes the _instance_ as the first argument to a method. It's convention to name that argument "self" because _the argument is an instance of the class itself_
 
 #### Adding Data
 
-`Message.__init__` only contains the `pass` keyword. That's because the constructor Python gives us doesn't do much of anything. In order to construct an Object with some data, we'll have to create our own constructor for our `Message` class!
+`Message.__init__` just contains the `pass` keyword. That's because the constructor Python gives us doesn't do much of anything. In order to construct an Object with some data, we'll have to create our own constructor for our `Message` class!
 
 So, our `Message` class should describe a message. What's in a message? For starters, a message needs content. We can store our message's content in a [String](https://www.pythoncheatsheet.org/cheatsheet/basics#data-types). But first We'll need to give our `Message` class a string to build a `Message` object with.
 
@@ -97,7 +97,7 @@ class Message:
         self.content = content
 ```
 
-Remember, `self` is an instance of `Message` -- it is the `Message` Object being constructed. So we set its `content` to the content passed in to the constructor.
+Remember, `self` is an instance of `Message` -- it is the `Message` Object being constructed. So we set `self`'s `content` to the content passed in to the constructor.
 
 Now we can create a `Message` Object that has content:
 
@@ -106,7 +106,7 @@ myMessage = Message("hello world!")
 print(myMessage.content) # hello world!
 ```
 
-Now let's add an author:
+Now let's add an author to our messages:
 
 ```python
 class Message:
@@ -121,7 +121,7 @@ print(myMessage.content)  # myMessage is an instance of the Message class
 
 #### Adding Functionality
 
-We can add additional functionality to our `Message` class too. Class related functionality provided by methods, just like the `__init__` method described earlier.
+We can add additional functionality to our `Message` class too. Class related functionality is provided by methods, just like the `__init__` method described earlier.
 
 Let's add a method to `Message` that prints our message for us:
 
@@ -137,6 +137,8 @@ class Message:
 myMessage = Message("Chris", "hello!")
 myMessage.print_message() # Chris says hello!
 ```
+
+Again, even though `my_message` expects a `self` argument, we don't pass anything in to `myMessage.print_message()` because Python passes the `Message` instance as the method's first argument.
 
 ## Inheritance
 
