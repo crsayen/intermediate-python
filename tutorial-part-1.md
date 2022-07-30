@@ -194,6 +194,8 @@ myWhisper.print_message() # Chris whispers I've got a secret
 
 #### Overriding the `__init__` method
 
+By default, a child class will have the same constructor as its parent. However, sometimes it makes sense for a child class to have its own constructor.
+
 Say we have a `Rectangle` class:
 
 ```python
@@ -210,9 +212,9 @@ rectangleArea = myRectangle.get_area()
 print(rectangleArea) # 50
 ```
 
-And we want to inherit from `Rectangle` to create a `Square` class. Squares have the same width and height, so there's no reason to ask for both. We can derive a `Square` class with a constructor that takes just one parameter by overriding its `__init__` method.
+And we want to inherit from `Rectangle` to create a `Square` class. Squares _are_ rectangles, but since squares have the same width and height, we should be able to construct a `Square` by providing just the length of its sides.
 
-When we override `__init__` we need to call the parent's `__init__` method, passing `self` as well as `side_length` for both `height` and `width`:
+We can derive a `Square` class with a constructor that takes just one parameter by overriding its `__init__` method. Keep in mind that when we override `__init__`, we need to call the parent's `__init__` method and pass it `self` as well as `side_length` for both `height` and `width`:
 
 ```python
 class Square(Rectangle):
