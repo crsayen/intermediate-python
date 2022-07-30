@@ -1,6 +1,3 @@
-from functools import lru_cache
-
-
 class InvalidTokenError(Exception):
     "raised when an invalid template is passed"
     pass

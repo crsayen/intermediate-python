@@ -1,0 +1,8 @@
+- [os.path.join()](https://www.geeksforgeeks.org/python-os-path-join-method/)
+- [iterators - `iter()`](https://www.w3schools.com/python/python_iterators.asp)
+- [String `format()`](https://www.w3schools.com/python/ref_string_format.asp)
+- [Unpacking arguments - `function(*args)`](https://www.geeksforgeeks.org/packing-and-unpacking-arguments-in-python/)
+- [walrus operator - `:=`](https://www.geeksforgeeks.org/walrus-operator-in-python-3-8/)
+- [list comprehension - `[i for i in list]`](https://www.w3schools.com/python/python_lists_comprehension.asp)
+- [@staticmethod](https://www.geeksforgeeks.org/python-staticmethod/)
+- []()
