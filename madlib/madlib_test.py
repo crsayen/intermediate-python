@@ -3,7 +3,7 @@ import unittest
 
 
 class Madlib_test(unittest.TestCase):
-    def test_is_template(self):
+    def test_is_prompt_token(self):
         assert Madlib.is_prompt_token("{noun}")
         assert not Madlib.is_prompt_token("noun")
 
@@ -22,7 +22,7 @@ class Madlib_test(unittest.TestCase):
             "person",
         ]
 
-    def test_get_prompt(self):
+    def test_get_next_prompt(self):
         madlib = Madlib("{noun}")
         assert madlib.get_next_prompt() == "noun"
         assert madlib.get_next_prompt() == None
