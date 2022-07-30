@@ -10,7 +10,7 @@
 - [A Simple Class](#a-simple-class)
 - [Adding Data](#adding-data)
 - [Adding Functionality](#adding-functionality)
-- [Inheritance](#inheritance)
+- [Inheritance](#Inheritance)
 
 Python is a [multi-paradigm](https://en.wikipedia.org/wiki/Programming_paradigm) programming language, but OOP is central to Python's design.
 
