@@ -5,4 +5,3 @@
 - [walrus operator - `:=`](https://www.geeksforgeeks.org/walrus-operator-in-python-3-8/)
 - [list comprehension - `[i for i in list]`](https://www.w3schools.com/python/python_lists_comprehension.asp)
 - [@staticmethod](https://www.geeksforgeeks.org/python-staticmethod/)
-- []()
