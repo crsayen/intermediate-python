@@ -67,7 +67,7 @@ So we've created a message Object, but it doesn't contain any data. Later, we'll
 
 If you look again at the code `myMessage = Message()` you can can see we called `Message` like it is a [function](https://www.pythoncheatsheet.org/cheatsheet/functions). That's because, behind the scenes, Python _is_ calling a function, and that function is named `Message.__init__`. The `__init__` function is special. It's what's called the class _constructor_. It belongs to the `Message` class and it's used to _construct_ `Message` objects.
 
-> _**Note**: functions that belong to a class are often called **methods**. Going forward, I'll refer to class functions as **methods** in order to distinguish between regular functions and the methods of a class._
+> _**Note**: functions that are part of a class are often called **methods**. Going forward, I'll refer to these functions as **methods** in order to distinguish between regular functions and the methods in a class._
 
 Our `Message` class has a constructor even though we didn't actually write one. If we don't define a constructor for our class, Python will create one for us. Behind the scenes, our Class ends up looking something like this:
 
