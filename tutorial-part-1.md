@@ -14,7 +14,7 @@
 
 Python is a [multi-paradigm](https://en.wikipedia.org/wiki/Programming_paradigm) programming language, but OOP is central to Python's design.
 
-This document will guide you through the fundamentals of OOP in Python. This guide assumes you are familiar with basic Python syntax. If you would like to brush up, or if "Python syntax" is something you've never heard before, check out [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html). I'll also include links to various syntax in the [PythonCheatsheet](https://www.pythoncheatsheet.org) throughout this guide. If you see a word in blue that you don't understand, click it to get more information.
+This document will guide you through the fundamentals of OOP in Python. This guide assumes you are familiar with basic Python syntax. If you would like to brush up, or if "Python syntax" is something you've never heard before, check out [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html). I'll also include links to various syntax in the [PythonCheatsheet](https://www.pythoncheatsheet.org) and other sources throughout this guide. If you see a word in blue that you don't understand, click it to get more information.
 
 ## What is OOP?
 
